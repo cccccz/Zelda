@@ -72,7 +72,7 @@ class Level:
         self.visible_sprites.custom_draw(self.player)
         self.visible_sprites.update()
         self.ui.display(self.player)
-        debug(self.player.weapon_index)
+        # debug(self.player.weapon_index)
 
 class YSortCameraGroup(pygame.sprite.Group):
     def __init__(self):

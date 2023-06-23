@@ -79,7 +79,7 @@ class Level:
                                     monster_name,
                                     (x,y),
                                     [self.visible_sprites,self.attackable_sprites],
-                                    self.obstacles_sprites)
+                                    self.obstacles_sprites,self.damage_player)
         
 
         
@@ -106,6 +106,13 @@ class Level:
         if self.current_attack:
             self.current_attack.kill()
         self.current_attack = None
+
+    def damage_player(self,amount,attack_type):
+        if self.player.vulnerable:
+            self.player.health -= amount
+            self.player.vulnerable = False
+            self.player.hurt_time = pygame.time.get_ticks()
+            # create particles
 
     def run(self):
         self.visible_sprites.custom_draw(self.player)

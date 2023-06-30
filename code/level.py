@@ -97,7 +97,7 @@ class Level:
         if style == 'heal':
             self.magic_player.heal(self.player,strength,cost,[self.visible_sprites])
         if style == 'flame':
-            pass
+            self.magic_player.flame(self.player,cost,[self.visible_sprites])
 
     def player_attack_logic(self):
         if self.attack_sprites:
@@ -125,10 +125,10 @@ class Level:
             self.player.vulnerable = False
             self.player.hurt_time = pygame.time.get_ticks()
             # create particles
-            self.animation_player.creat_particles(attack_type,self.player.rect.center,[self.visible_sprites])
+            self.animation_player.create_particles(attack_type,self.player.rect.center,[self.visible_sprites])
     
     def trigger_death_particles(self,pos,particle_type):
-        self.animation_player.creat_particles(particle_type,pos,self.visible_sprites)
+        self.animation_player.create_particles(particle_type,pos,self.visible_sprites)
 
     def run(self):
         self.visible_sprites.custom_draw(self.player)

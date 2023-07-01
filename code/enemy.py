@@ -4,7 +4,7 @@ from settings import *
 from support import *
 
 class Enemy(Entity):
-    def __init__(self,monster_name,pos,groups,obstacle_sprites,damage_player,trigger_death_particles):
+    def __init__(self,monster_name,pos,groups,obstacle_sprites,damage_player,trigger_death_particles,add_exp):
         # general setup
         super().__init__(groups)
         self.sprite_type = 'enemy'
@@ -43,6 +43,8 @@ class Enemy(Entity):
         self.vulnerable = True
         self.hit_time = None
         self.invincibility_duration = 300
+
+        self.add_exp = add_exp
       
     def import_graphics(self,name):
         self.animations = {'idle':[],'move':[],'attack':[]}
@@ -119,7 +121,7 @@ class Enemy(Entity):
             if attack_type == 'weapon':
                 self.health -= player.get_full_weapon_damage()
             else:
-                pass
+                self.health -= player.get_full_magic_damage()
             #   get hurt by magic
             self.hit_time = pygame.time.get_ticks()
             self.vulnerable = False
@@ -128,6 +130,7 @@ class Enemy(Entity):
         if self.health <= 0:
             self.kill()
             self.trigger_death_particles(self.rect.center,self.monster_name)
+            self.add_exp(self.exp)
 
     def hit_reaction(self):
         if not self.vulnerable:

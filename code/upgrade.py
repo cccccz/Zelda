@@ -41,7 +41,7 @@ class Upgrade:
             if keys[pygame.K_SPACE]:
                 self.can_move = False
                 self.selection_time = pygame.time.get_ticks()
-                print(self.selection_index)
+                self.item_list[self.selection_index].trigger(self.player)
 
     def selection_cooldown(self):
         if not self.can_move:
@@ -99,10 +99,39 @@ class Item:
         # draw
         surface.blit(title_surf,title_rect)
         surface.blit(cost_surf,cost_rect)
+    
+    def display_bar(self,surface,value,max_value,selected):
+        #drawing setup
+        top = self.rect.midtop + pygame.math.Vector2(0,60)
+        bottom = self.rect.midbottom - pygame.math.Vector2(0,60)
+        color = BAR_COLOR_SELECTED if selected else BAR_COLOR
 
-    def display(self,surface,selection_num,name,valuie,max_value,cost):
+        full_height = bottom[1] - top[1]
+        relative_number = (value/max_value) * full_height
+        value_rect = pygame.Rect(top[0]  - 15, bottom[1] - relative_number,30,10)
+
+        pygame.draw.line(surface,color,top,bottom,5)
+        pygame.draw.rect(surface,color,value_rect)
+
+    def trigger(self,player):
+        upgrade_attribute = list(player.stats.keys())[self.index]
+
+        if player.exp >= player.upgrade_cost[upgrade_attribute] and player.stats[upgrade_attribute] < player.max_stats[upgrade_attribute]:
+            player.exp -= player.upgrade_cost[upgrade_attribute]
+            player.stats[upgrade_attribute] *= 1.2
+            player.upgrade_cost[upgrade_attribute] *= 1.4
+
+        if player.stats[upgrade_attribute] > player.max_stats[upgrade_attribute]:
+            player.stats[upgrade_attribute] = player.max_stats[upgrade_attribute]
+
+    def display(self,surface,selection_num,name,value,max_value,cost):
         if self.index == selection_num:
-            pass
-        pygame.draw.rect(surface,UI_BG_COLOR,self.rect)
+            pygame.draw.rect(surface,UPGRADE_BG_COLOR_SELECTED,self.rect)
+            pygame.draw.rect(surface,UI_BORDER_COLOR,self.rect,4)
+        else:
+            pygame.draw.rect(surface,UI_BG_COLOR,self.rect)
+            pygame.draw.rect(surface,UI_BORDER_COLOR,self.rect,4)
+
         self.display_names(surface,name,cost,self.index == selection_num)
+        self.display_bar(surface,value,max_value,self.index==selection_num)
         

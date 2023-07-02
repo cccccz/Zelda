@@ -18,6 +18,12 @@ UI_BG_COLOR = '#222222'
 UI_BORDER_COLOR = '#111111'
 TEXT_COLOR = '#EEEEEE'
 
+HITBOX_OFFSET = {
+    'player': -26,
+    'object': -40,
+    'grass': -10,
+    'invisible': 0}
+
 # ui colors
 HEALTH_COLOR = 'red'
 ENERGY_COLOR = 'blue'
@@ -26,7 +32,7 @@ UI_BORDER_COLOR_ACTIVE = 'gold'
 # upgrade menu
 TEXT_COLOR_SELECTED = '#111111'
 BAR_COLOR = '#EEEEEE'
-BAR_COLOR_SELCECTED = '#111111'
+BAR_COLOR_SELECTED = '#111111'
 UPGRADE_BG_COLOR_SELECTED = '#EEEEEE'
 
 # weapons

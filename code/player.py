@@ -49,6 +49,11 @@ class Player(Entity):
         self.hurt_time = None
         self.invulnerability_duration = 500
 
+        # import a sound
+        self.weapon_attack_sound = pygame.mixer.Sound('../audio/sword.wav')
+        self.weapon_attack_sound.set_volume(0.4)
+
+
     def import_player_assets(self):
         character_path = '../graphics/player/'
         self.animations = {'up':[],'down':[],'left':[],'right':[],
@@ -103,6 +108,7 @@ class Player(Entity):
                 self.attacking = True
                 self.attack_time = pygame.time.get_ticks()
                 self.create_attack()
+                self.weapon_attack_sound.play()
 
             if keys[pygame.K_LCTRL] and not self.attacking:
                 self.attacking = True

@@ -59,6 +59,12 @@ class Player(Entity):
         for animation in self.animations.keys():
             full_path = character_path + animation
             self.animations[animation]= import_folder(full_path)
+
+    def get_value_by_index(self,index):
+        return list(self.stats.values())[index]
+    
+    def get_cost_by_index(self,index):
+        return list(self.upgrade_cost.values())[index]
         
     def input(self):
         # use the following if you want to ban
@@ -116,7 +122,6 @@ class Player(Entity):
                 else:
                     self.weapon_index = 0
                 self.weapon = list(weapon_data.keys())[self.weapon_index]
-                print(self.weapon)
 
             if keys[pygame.K_e] and self.can_switch_magic:
                 self.can_switch_magic = False

@@ -7,7 +7,7 @@ class MagicPlayer:
         self.animation_player = animation_player
 
     def heal(self,player,strength,cost,groups):
-        print('heal')
+        # print('heal')
         if player.energy >= cost:
             player.health += strength
             player.energy -= cost

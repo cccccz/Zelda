@@ -4,7 +4,7 @@
 This project is made by followin the tutorial made by ClearCode
 
 ## Demonstration
-![Alt Text](mm.png)
+![Alt Text](/demo/mm.png)
 ![Demo Video](https://github.com/cccccz/Zelda/raw/main/demo/show.mp4)
 
 

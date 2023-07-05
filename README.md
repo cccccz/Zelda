@@ -4,12 +4,13 @@
 This project is made by followin the tutorial made by ClearCode
 
 ## Demonstration
+![Alt Text](mm.png)
 ![Demo Video](https://github.com/cccccz/Zelda/raw/main/demo/show.mp4)
 
 
 ## Features
 1. Weapon and Magic systems
-   - 2 independent ways to attack enemy
+   - 2 independent ways to attack enemy: weapons and magic
 
 2. Enemy Chasing
    - Explain the behavior of enemies in your game, particularly how they chase the main character.
@@ -27,8 +28,16 @@ To run this game, you'll need to have Pygame installed. You can install it using
    pip install pygame
    
 ## Usage
-Arrow keys to move around, space to attack, LCTRL to use magic. Press M to pause the game and open the stats menu. In stats menu, left, right arrow key
-to select the attribute you want to upgrade and press space to upgrade(with sufficient exp). In stats menu, press M again to quit menu.
+set code as working directory and run main.py
+
+Arrow keys to move around
+space to attack
+LCTRL to use magic
+M to pause the game and open the stats menu
+In stats menu, left, right arrow keyto select the attribute you want to upgrade and press space to upgrade(with sufficient exp)
+In stats menu, press M again to quit menu
+Q switching weapons
+E switching magic
 
 ## Credits
 see https://www.youtube.com/watch?v=QU1pPzEGrqw&ab_channel=ClearCode

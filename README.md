@@ -1,7 +1,7 @@
 # Zelda in Python
 
 ## Overview
-This project is made by followin the tutorial made by ClearCode
+A Zelda like pixel game written in python using Pygame library
 
 ## Demonstration
 ![Alt Text](/demo/mm.png)
@@ -9,14 +9,15 @@ This project is made by followin the tutorial made by ClearCode
 
 
 ## Features
-1. Weapon and Magic systems
-   - 2 independent ways to attack enemy: weapons and magic
+1. 2 independent Attack Systems
+   - You can use your weapon or magic to attack the enemies/ heal yourself.
+   - Attacking using weapon does not cost energy but casting a magic does!
 
-2. Enemy Chasing
-   - Explain the behavior of enemies in your game, particularly how they chase the main character.
+3. Enemy Chasing
+   - The enemy will be chasing the player within a certain range and then attack.
 
-3. Upgrade System
-   - Detail the upgrade system in your game.
+4. Upgrade System
+   - Press M you can open the stats menu. Properties of player(Attack, Magic, Speed, etc.) can be upgraded there.
 
 ## Installation
 To run this game, you'll need to have Pygame installed. You can install it using `pip` by following these steps:
